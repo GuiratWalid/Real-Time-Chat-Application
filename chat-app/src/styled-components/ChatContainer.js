@@ -14,8 +14,9 @@ const ChatContainer = styled.div`
         width: 85vw;
         background-color: #00000076;
         display: grid; 
+        border-radius: 0.5rem;
         grid-template-columns: 25% 75%;
-        @media screen and(min-width:720px) and (max--width: 1080px){
+        @media screen and(min-width:720px) and (max-width: 1080px){
             grid-template-columns: 35% 65%;
         }
     }

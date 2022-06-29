@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Navigate, useNavigate } from 'react-router-dom';
 import ChatContainer from '../styled-components/ChatContainer';
 import { allUsersRoute } from '../utils/APIRoutes';
+import Contacts from '../components/Contacts';
 
 
 const Chat = () => {
@@ -39,10 +40,18 @@ const Chat = () => {
         getContacts();
     }, [currentUser]);
 
+    const handleChatChange = chat => {
+
+    };
+
     return (
         <ChatContainer>
             <div className='container'>
-
+                <Contacts
+                    contacts={contacts}
+                    currentUser={currentUser}
+                    changeChat={handleChatChange}
+                />
             </div>
         </ChatContainer>
     )
