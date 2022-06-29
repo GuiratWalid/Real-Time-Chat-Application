@@ -4,7 +4,7 @@ const ContactsContainer = styled.div`
     display: grid;
     grid-template-rows: 10% 75% 15%;
     oveflow: hidden;
-    
+    min-width: 250px;
     border-radius: 0.5rem 0 0 0.5rem;
     background-color: #080420;
     .brand{
@@ -26,37 +26,36 @@ const ContactsContainer = styled.div`
         flex-direction: column;
         align-items: center;
         overflow: auto;
-        max-height: 515px;
+        max-height: 505px;
         gap: 0.8rem;
+        margin-top: 10px;
+        &::-webkit-scrollbar{
+            width: 0.4rem;
+            &-thumb{
+                background-color: #ffffff39;
+                width: 0.3rem;
+            }
+        }
         .contact{
             background-color: #ffffff39;
-            min-height: 6rem;
+            min-height: 5rem;
             width: 90%;
             cursor: pointer;
             border-radius
-            padding: 0.4rem;
-            gap: 1rem;
+            padding: 0.6rem;
+            gap: 2rem;
             align-items: center;
             display: flex;
             transition: 0.5s ease-in-out;
             .avatar{
                 img{
                     height: 3rem;
+                    margin-left: 10px;
                 }
             }
             .username{
                 h3{
                     color:white;
-                }
-            }
-            @media screen and (max-width: 1000px){
-                flex-direction: column;
-                .username{
-                    h3{
-                        font-size: 1rem;
-                        padding: 2px;
-                        margin: 0;
-                    }
                 }
             }
         }

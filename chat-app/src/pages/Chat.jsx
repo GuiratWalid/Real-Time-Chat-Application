@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import ChatContainer from '../styled-components/ChatContainer';
 import { allUsersRoute } from '../utils/APIRoutes';
 import Contacts from '../components/Contacts';
+import Welcome from '../components/Welcome';
+import Messaging from '../components/Messaging';
 
 
 const Chat = () => {
@@ -12,6 +14,8 @@ const Chat = () => {
 
     const [currentUser, setCurrentUser] = useState(undefined);
 
+    const [currentChat, setCurrentChat] = useState(undefined);
+
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -19,11 +23,13 @@ const Chat = () => {
             const user = localStorage.getItem('user');
             if (!user)
                 navigate('/login');
-            else
-                setCurrentUser(await JSON.parse(user));
+            else {
+                const data = await JSON.parse(user);
+                setCurrentUser(data);
+            }
         };
         getCurrentUser();
-    }, []);
+    }, [navigate]);
 
     useEffect(() => {
         const getContacts = async () => {
@@ -38,10 +44,10 @@ const Chat = () => {
             }
         };
         getContacts();
-    }, [currentUser]);
+    }, [currentUser, navigate]);
 
     const handleChatChange = chat => {
-
+        setCurrentChat(chat);
     };
 
     return (
@@ -52,6 +58,17 @@ const Chat = () => {
                     currentUser={currentUser}
                     changeChat={handleChatChange}
                 />
+                {
+                    currentChat === undefined ? (
+                        <Welcome
+                            currentUser={currentUser}
+                        />
+                    ) : (
+                        <Messaging
+                            currentChat={currentChat}
+                        />
+                    )
+                }
             </div>
         </ChatContainer>
     )

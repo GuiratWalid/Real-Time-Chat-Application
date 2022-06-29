@@ -10,8 +10,6 @@ const Contacts = ({ contacts, currentUser, changeChat }) => {
         image: undefined,
     });
 
-    const [currentChat, setCurrentChat] = useState(undefined);
-
     const [selectedContact, setSelectedContact] = useState(undefined);
 
     useEffect(() => {
@@ -47,9 +45,9 @@ const Contacts = ({ contacts, currentUser, changeChat }) => {
                             {
                                 contacts.map((contact, index) => (
                                     <div
-                                        onClick={() => changeCurrentChat}
+                                        onClick={() => changeCurrentChat(index, contact)}
                                         key={index}
-                                        className={`contact ${index === user.selected}?'selected':''`}
+                                        className={`contact ${index === selectedContact ? 'selected' : ''}`}
                                     >
                                         <div className='avatar'>
                                             <img
