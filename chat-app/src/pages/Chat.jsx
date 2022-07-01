@@ -66,6 +66,7 @@ const Chat = () => {
                     ) : (
                         <Messaging
                             currentChat={currentChat}
+                            currentUser={currentUser}
                         />
                     )
                 }

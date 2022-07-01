@@ -1,11 +1,27 @@
 import React from 'react';
-import MessagingContainer from '../styled-components/MessagingContainer';
+import MessagesContainer from '../styled-components/MessagesContainer';
 
-const Messages = () => {
+const Messages = ({ messages }) => {
+    console.log(messages);
     return (
-        <MessagingContainer>
-
-        </MessagingContainer>
+        <MessagesContainer>
+            {
+                messages !== [] &&
+                messages.map((message, index) => {
+                    return (
+                        <div>
+                            <div className={`message ${message.fromSelf ? 'sended' : 'received'}`}>
+                                <div className="content">
+                                    <p>
+                                        {message.message}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    )
+                })
+            }
+        </MessagesContainer>
     );
 };
 
