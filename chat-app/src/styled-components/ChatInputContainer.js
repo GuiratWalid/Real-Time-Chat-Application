@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 const ChatInputContainer = styled.div`
     display: grid;
-    height: 14%;
     grid-template-columns: 5% 95%;
     align-items: center;
     background-color: #080420; 
@@ -59,7 +58,6 @@ const ChatInputContainer = styled.div`
         background-color: #ffffff34;
         input {
             width: 90%;
-            height: 60%;
             background-color: transparent;
             color: white;
             border: none;
